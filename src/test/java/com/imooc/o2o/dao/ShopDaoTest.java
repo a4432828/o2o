@@ -2,6 +2,7 @@ package com.imooc.o2o.dao;
 
 import java.util.Date;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +17,7 @@ public class ShopDaoTest extends BaseTest {
 	private ShopDao shopDao;
 	
 	@Test
+	@Ignore
 	public void testShopInsert() {
 		Shop shop = new Shop();
 		PersonInfo owner = new PersonInfo();
@@ -26,7 +28,7 @@ public class ShopDaoTest extends BaseTest {
 		shopCategory.setShopCategoryId(12L);
 		area.setAreaId(3L);
 		
-		shop.setShopName("mytest6");
+		shop.setShopName("mytest777777777777777");
 		shop.setShopDesc("mytest666");
 		shop.setShopAddr("testaddr55666");
 		shop.setPhone("13810524526");
@@ -42,5 +44,14 @@ public class ShopDaoTest extends BaseTest {
 		int insertShop = shopDao.insertShop(shop);
 		
 		System.out.println(insertShop);
+	}
+	
+	@Test
+	public void testupdateShop() {
+		Shop shop = new Shop();
+		shop.setShopId(29L);
+		shop.setShopDesc("我来了");
+		
+		shopDao.updateShop(shop);
 	}
 }

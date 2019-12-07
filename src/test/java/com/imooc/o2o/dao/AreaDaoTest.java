@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.imooc.o2o.BaseTest;
 import com.imooc.o2o.dao.AreaDao;
 import com.imooc.o2o.entity.Area;
+import com.imooc.o2o.entity.Shop;
 
 public class AreaDaoTest extends BaseTest {
 	@Autowired
