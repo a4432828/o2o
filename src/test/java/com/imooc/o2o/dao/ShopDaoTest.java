@@ -28,7 +28,7 @@ public class ShopDaoTest extends BaseTest {
 		shopCategory.setShopCategoryId(12L);
 		area.setAreaId(3L);
 		
-		shop.setShopName("mytest777777777777777");
+		shop.setShopName("mytest6");
 		shop.setShopDesc("mytest666");
 		shop.setShopAddr("testaddr55666");
 		shop.setPhone("13810524526");
@@ -47,11 +47,15 @@ public class ShopDaoTest extends BaseTest {
 	}
 	
 	@Test
-	public void testupdateShop() {
+	public void testShopUpdate() {
 		Shop shop = new Shop();
-		shop.setShopId(29L);
-		shop.setShopDesc("我来了");
+		shop.setShopId(52L);
 		
-		shopDao.updateShop(shop);
+		shop.setShopName("我就打酱油");
+		shop.setShopDesc("我就打酱油");
+		
+		int insertShop = shopDao.updateShop(shop);
+		
+		System.out.println(insertShop);
 	}
 }

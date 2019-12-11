@@ -12,8 +12,7 @@ public interface ShopDao {
 	
 	
 	/**
-	 * 
-	 * 用来更新店铺信息
+	 	* 更新店铺
 	 * @param shop
 	 * @return
 	 */
