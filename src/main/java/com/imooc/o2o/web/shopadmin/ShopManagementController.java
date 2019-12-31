@@ -22,6 +22,7 @@ import com.imooc.o2o.entity.Shop;
 import com.imooc.o2o.enums.OperationStatusEnum;
 import com.imooc.o2o.enums.ShopStateEnum;
 import com.imooc.o2o.services.ShopService;
+import com.imooc.o2o.util.CodeUtil;
 import com.imooc.o2o.util.HttpServletRequestUtil;
 
 
@@ -41,6 +42,13 @@ public class ShopManagementController {
 	@ResponseBody
 	public Map<String, Object> registerShop(HttpServletRequest request){
 		Map<String, Object> modelMap = new HashMap<>();
+		
+		// 校验验证码
+		if (!CodeUtil.checkVerifyCode(request)) {
+			modelMap.put("success", false);
+			modelMap.put("errMsg", OperationStatusEnum.VERIFYCODE_ERROR.getStateInfo());
+			return modelMap;
+		}
 		
 		String shopStr = HttpServletRequestUtil.getString(request, "shopStr");
 		ObjectMapper mapper = new ObjectMapper(); // create once, reuse（创建一次，可重用）
