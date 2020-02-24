@@ -1,5 +1,6 @@
 package com.imooc.o2o.service;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -49,10 +50,20 @@ public class ShopServiceTest extends BaseTest {
 		shop.setArea(area);
 		shop.setShopCategory(shopCategory);
 		shop.setOwner(owner);
-		String filePath = "D:\\image_200x300.jpg";
+		String filePath = "D:\\test.jpeg";
 		
 		ShopExecution se = shopService.addShop(shop, path2MultipartFile(filePath));
 		
+	}
+	
+	@Test
+	public void testModifyShop() throws IOException {
+		Shop shop = new Shop();
+		shop.setShopId(42L);
+		shop.setShopName("修改店铺测试");
+		String filePath = "E:\\1-2.jpg";
+		shopService.modifyShop(shop, path2MultipartFile(filePath));
+		System.out.println("修改后图片：" + shop.getShopImg());
 	}
 	
 	/**

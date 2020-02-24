@@ -7,10 +7,12 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.imooc.o2o.BaseTest;
+import com.imooc.o2o.dto.ShopExecution;
 import com.imooc.o2o.entity.Area;
 import com.imooc.o2o.entity.PersonInfo;
 import com.imooc.o2o.entity.Shop;
 import com.imooc.o2o.entity.ShopCategory;
+import com.imooc.o2o.enums.ShopStateEnum;
 
 public class ShopDaoTest extends BaseTest {
 	@Autowired
@@ -47,10 +49,18 @@ public class ShopDaoTest extends BaseTest {
 	}
 	
 	@Test
+	public void testShopById() {
+		Shop selectByShopId = shopDao.selectByShopId(15);
+		
+		System.out.println(selectByShopId.getShopName());
+	}
+	
+	@Test
+	@Ignore
 	public void testShopUpdate() {
 		Shop shop = new Shop();
 		shop.setShopId(52L);
-		
+		  
 		shop.setShopName("我就打酱油");
 		shop.setShopDesc("我就打酱油");
 		

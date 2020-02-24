@@ -16,5 +16,33 @@ public interface ShopService {
 	 * @return
 	 */
 	ShopExecution addShop(Shop shop, MultipartFile shopImg) throws ShopOperationException;
+	
+	/**
+	 * 根据ID获取店铺信息
+	 * @param shopId
+	 * @return
+	 */
+	Shop getByShopId(long shopId);
+	
+	/**
+	 * 修改店铺
+	 * 
+	 * @param shop
+	 * @param shopImg
+	 * @return
+	 */
+	ShopExecution modifyShop(Shop shop, MultipartFile shopImg) throws ShopOperationException;
+	
+	
+	/**
+	 * 获取店铺分页列表
+	 * 
+	 * @param shopCondition 店铺查询条件
+	 * @param pageIndex     第几页
+	 * @param pageSize      每页条数
+	 * @return
+	 * @throws ShopOperationException
+	 */
+	ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) throws ShopOperationException;
 
 }

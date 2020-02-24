@@ -1,7 +1,9 @@
 package com.imooc.o2o.util;
 
+
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -38,7 +40,14 @@ public class ImageUtil {
 		String relativeAddr = targetAddr + realFileName + extension;
 		File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
 		try {
-			Thumbnails.of(thumbnail.getInputStream()).size(200, 200)
+			InputStream inputStream = thumbnail.getInputStream();
+			
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			Thumbnails.of(thumbnail.getInputStream()).size(200, 200)   
 					.watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "watermark.jpg")), 0.5f)
 					.outputQuality(0.8f).toFile(dest);
 		} catch (IOException e) {
@@ -81,6 +90,27 @@ public class ImageUtil {
 		// 目录文件不存在
 		if (!dirPath.exists()) {
 			dirPath.mkdirs();
+		}
+	}
+	
+	/**
+	 * 删除文件或目录下的文件
+	 * 
+	 * @param storePath：文件路径或者目录路径
+	 */
+	public static void deleteFileOrPath(String storePath) {
+		File fileOrPath = new File(PathUtil.getImgBasePath() + storePath);
+		// 存在
+		if (fileOrPath.exists()) {
+			// 如果是目录
+			if (fileOrPath.isDirectory()) {
+				File[] files = fileOrPath.listFiles();
+				for (int i = 0; i < files.length; i++) {
+					files[i].delete();
+				}
+			}
+			// 删除文件或文件夹
+			fileOrPath.delete();
 		}
 	}
 	
